@@ -32,7 +32,6 @@ class LoginPage extends StatelessWidget {
       builder: (_) {
         return SafeArea(
           child: SingleChildScrollView(
-            
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -109,8 +108,8 @@ class LoginPage extends StatelessWidget {
                         //   color: UIDataColors.commonColor,
                         // ),
                         SizedBox(
-                          width: Get.width * 0.5,
-                          // height: Get.height * 0.13,
+                          width: 110,
+                          height: 80,
                           child: Padding(
                             padding: const EdgeInsets.only(top: 30.0),
                             child: Obx(
@@ -125,6 +124,7 @@ class LoginPage extends StatelessWidget {
                                       label: 'Login',
                                       color: UIDataColors.commonColor,
                                       showBorder: false,
+                                      fontsize: 18,
                                     ),
                             ),
                           ),

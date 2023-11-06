@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/home_controller.dart';
+import '../../services/auth.dart';
 import '../../utils/config/uidata.dart';
 import '../widgets/common_scaffold.dart';
 import '../widgets/logoWidget.dart';
@@ -28,6 +29,8 @@ import '../widgets/logoWidget.dart';
 
 class HomePage extends StatelessWidget {
   // GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final AuthService auth = AuthService();
+
   Widget bodyData() {
     return GetBuilder<HomeController>(
       builder: (_) {
@@ -41,58 +44,26 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       height: Get.height / 40,
                     ),
-                    Container(
-                      height: Get.height / 4.2,
-                      width: Get.width / 1.11,
-                      decoration: ShapeDecoration(
-                        color: Colors.black38,
-                        image: DecorationImage(
-                            image: AssetImage(
-                              'assets/images/Group 94.jpg',
-                            ),
-                            fit: BoxFit.cover),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Welcome ",
+                          style: TextStyle(fontSize: 30),
                         ),
-                        // color: Colors.blue,
-                      ),
+                        Text(
+                          _.userName!,
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.w300),
+                        )
+                      ],
                     ),
                     SizedBox(
                       height: Get.height / 40,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        LogoCard(
-                          onPressed: () {
-                            _.openAndLoadFiles();
-                          },
-                          imagePath: "assets/images/file-storage 1.png",
-                          CardText: "File Storage",
-                        ),
-                        LogoCard(
-                          onPressed: () {
-                            // Get.toNamed(Routes.signatureRoute);
-                          },
-                          imagePath: "assets/images/drive 1.png",
-                          CardText: "Google Drive",
-                        ),
-                        LogoCard(
-                          onPressed: () {
-                            // Get.toNamed(Routes.signatureRoute);
-                          },
-                          imagePath: "assets/images/dropbox 1.png",
-                          CardText: "DropBox",
-                        ),
-                        LogoCard(
-                          onPressed: () {
-                            // Get.toNamed(Routes.signatureRoute);
-                          },
-                          imagePath: "assets/images/personal-information 1.png",
-                          CardText: "Personal Storage",
-                        )
-                      ],
+                    SizedBox(
+                      height: Get.height / 40,
                     ),
                     SizedBox(
                       height: Get.height / 40,
@@ -108,7 +79,9 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.offAllNamed(Routes.editUserName);
+                            },
                             child: Container(
                               width: Get.width / 2.4,
                               height: Get.height * 0.06,
@@ -119,6 +92,29 @@ class HomePage extends StatelessWidget {
                               child: Center(
                                 child: Text(
                                   'Edit User Name',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            )),
+                        TextButton(
+                            onPressed: () {
+                              Get.offAllNamed(Routes.editEmail);
+                            },
+                            child: Container(
+                              width: Get.width / 2.4,
+                              height: Get.height * 0.06,
+                              decoration: ShapeDecoration(
+                                  color: UIDataColors.commonColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20))),
+                              child: Center(
+                                child: Text(
+                                  'Edit Email',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,

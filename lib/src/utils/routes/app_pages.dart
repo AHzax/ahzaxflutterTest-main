@@ -5,9 +5,12 @@ import 'package:docapp/src/bindings/settings_bindings.dart';
 
 // routes
 
+import '../../bindings/editUSerName_binding.dart';
 import '../../bindings/home_bindings.dart';
 import '../../bindings/login_bindings.dart';
 import '../../middlewares/auth.dart';
+import '../../ui/views/editEmal.dart';
+import '../../ui/views/editUserName.dart';
 import '../../ui/views/homepage.dart';
 import '../../ui/views/loginPage.dart';
 import '../../ui/views/signUpPage.dart';
@@ -39,6 +42,17 @@ class AppPages {
       name: Routes.signUpRoute,
       page: () => SignUpPage(),
       binding: LoginBindings(),
+    ),
+
+    GetPage(
+      name: Routes.editUserName,
+      page: () => EditUserNamePage(),
+      binding: EditBinding(),
+    ),
+    GetPage(
+      name: Routes.editEmail,
+      page: () => EditEmailPage(),
+      binding: EditBinding(),
     ),
 
     GetPage(

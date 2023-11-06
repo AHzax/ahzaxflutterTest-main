@@ -29,120 +29,122 @@ class SignUpPage extends StatelessWidget {
   Widget bodyData() {
     return GetBuilder<LoginController>(
       builder: (_) {
-        return SafeArea(
-          child: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/bgb.png',
+        return SingleChildScrollView(
+          child: SafeArea(
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                      'assets/images/bgb.png',
+                    ),
+                    fit: BoxFit.scaleDown),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Signup",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
                   ),
-                  fit: BoxFit.scaleDown),
+                  SizedBox(height: 5),
+                  Text(
+                    "Please Signup to your Account",
+                    style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16,
+                        color: Colors.grey),
+                  ),
+                  SizedBox(height: 120),
+                  Form(
+                      // key: _.form,
+                      child: Column(
+                    children: [
+                      CommonTextField(
+                        controller: _.signupFirstname,
+                        hintText: "FirstName",
+                        labelText: "FirstName",
+                        prefix: Icon(
+                          Icons.person_outline,
+                          size: 17,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      CommonTextField(
+                        controller: _.signupLastname,
+                        hintText: "LastName",
+                        labelText: "LastName",
+                        prefix: const Icon(
+                          Icons.email_outlined,
+                          size: 17,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      CommonTextField(
+                        controller: _.signupEmail,
+                        hintText: "Email",
+                        labelText: "Email",
+                        prefix: Icon(
+                          Icons.lock_outline,
+                          size: 17,
+                        ), // isTextHidden :true,
+                      ),
+                      SizedBox(height: 20),
+                      CommonTextField(
+                        controller: _.signupPassword,
+                        hintText: "Password",
+                        labelText: "Password",
+                        prefix: Icon(
+                          Icons.lock_outline,
+                          size: 17,
+                        ), // isTextHidden :true,
+                      ),
+                      SizedBox(
+                        height: 80,
+                      ),
+                      ReusableButton(
+                        label: 'Submit',
+                        buttonCurve: 9,
+                        onPressed: () {
+                          // Get.to(const DashboardScreen());
+                          _.signUpUser();
+                        },
+                        color: UIDataColors.commonColor,
+                        showBorder: false,
+                      ),
+                      SizedBox(height: 23),
+                      GestureDetector(
+                        onTap: () => Get.to({}),
+                        child: RichText(
+                          text: TextSpan(
+                              text: 'Already have an account?',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                              ),
+                              children: <TextSpan>[
+                                //   <-- 2
+                                TextSpan(
+                                    text: 'Login',
+                                    style: TextStyle(
+                                      color: UIDataColors.commonColor,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      // color: UIDataColors.commonColor,
+                                    ),
+                                    children: <TextSpan>[
+                                      //  <-- 3 (children of 2 textspan
+                                      TextSpan(
+                                        text: '',
+                                      )
+                                    ]),
+                              ]),
+                        ),
+                      )
+                    ],
+                  ))
+                ],
+              ).marginAll(30),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Signup",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  "Please Signup to your Account",
-                  style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      fontSize: 16,
-                      color: Colors.grey),
-                ),
-                SizedBox(height: 120),
-                Form(
-                    // key: _.form,
-                    child: Column(
-                  children: [
-                    CommonTextField(
-                      controller: _.signupFirstname,
-                      hintText: "FirstName",
-                      labelText: "FirstName",
-                      prefix: Icon(
-                        Icons.person_outline,
-                        size: 17,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    CommonTextField(
-                      controller: _.signupLastname,
-                      hintText: "LastName",
-                      labelText: "LastName",
-                      prefix: const Icon(
-                        Icons.email_outlined,
-                        size: 17,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    CommonTextField(
-                      controller: _.signupEmail,
-                      hintText: "Email",
-                      labelText: "Email",
-                      prefix: Icon(
-                        Icons.lock_outline,
-                        size: 17,
-                      ), // isTextHidden :true,
-                    ),
-                    SizedBox(height: 20),
-                    CommonTextField(
-                      controller: _.signupPassword,
-                      hintText: "Password",
-                      labelText: "Password",
-                      prefix: Icon(
-                        Icons.lock_outline,
-                        size: 17,
-                      ), // isTextHidden :true,
-                    ),
-                    SizedBox(
-                      height: 80,
-                    ),
-                    ReusableButton(
-                      label: 'Submit',
-                      buttonCurve: 9,
-                      onPressed: () {
-                        // Get.to(const DashboardScreen());
-                        _.signUpUser();
-                      },
-                      color: UIDataColors.commonColor,
-                      showBorder: false,
-                    ),
-                    SizedBox(height: 23),
-                    GestureDetector(
-                      onTap: () => Get.to({}),
-                      child: RichText(
-                        text: TextSpan(
-                            text: 'Already have an account?',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                            ),
-                            children: <TextSpan>[
-                              //   <-- 2
-                              TextSpan(
-                                  text: 'Login',
-                                  style: TextStyle(
-                                    color: UIDataColors.commonColor,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    // color: UIDataColors.commonColor,
-                                  ),
-                                  children: <TextSpan>[
-                                    //  <-- 3 (children of 2 textspan
-                                    TextSpan(
-                                      text: '',
-                                    )
-                                  ]),
-                            ]),
-                      ),
-                    )
-                  ],
-                ))
-              ],
-            ).marginAll(30),
           ),
         );
       },

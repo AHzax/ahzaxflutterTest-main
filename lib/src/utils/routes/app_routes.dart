@@ -20,6 +20,13 @@ abstract class Routes {
   //addImages
   static const addImages = '/add-images';
 
+
+  // Editing UserName
+  static const editUserName = '/edit-userName';
+
+  // Editing email
+  static const editEmail = '/edit-email';
+
   //createProject
   static const CreateProjectRoute = '/create-project';
   //createtask

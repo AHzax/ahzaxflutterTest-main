@@ -27,22 +27,7 @@ class AuthService extends GetxService {
     return this;
   }
 
-  Future<void> updateEmail(String email) async {
-    if (email == '') {
-    } else {
-      await user?.updateEmail(email.trim());
-      await user?.sendEmailVerification();
-    }
-  }
 
-  Future<void> updateDisplayName(String firstname, String lastname) async {
-    if (firstname == "" && lastname == '') {
-    } else {
-      await user?.updateDisplayName(
-          "${firstname.toString().trim()} ${lastname.toString().trim()}");
-      // await user?.updateDisplayName(name.toString().trim());
-    }
-  }
 
   // Future<bool> login(String username, String password) async {
   //   LoginRequest req = LoginRequest.fromJson({

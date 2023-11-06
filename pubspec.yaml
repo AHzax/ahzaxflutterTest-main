@@ -48,7 +48,7 @@ dependencies:
   # edge_detection: ^1.1.1
   
   
-  advance_pdf_viewer: ^2.0.1
+  # advance_pdf_viewer: ^2.0.1
   cached_network_image: ^3.2.0
   cupertino_icons: ^1.0.2
   dio: ^5.1.0
@@ -58,20 +58,20 @@ dependencies:
   flutter_colorpicker: ^0.4.0
   flutter_svg: ^2.0.7
   flutter_typeahead: ^3.2.5
-  file_picker: ^5.5.0
+  # file_picker: ^5.5.0
   font_awesome_flutter:
   get: ^4.6.5
-  google_mlkit_text_recognition: ^0.6.0
-  image_picker: ^0.8.4+4
-  intl: 
-  mime: ^1.0.2
-  path: ^1.8.2
-  path_provider: ^2.0.15
-  permission_handler: ^10.0.0
-  photo_view:
+  # google_mlkit_text_recognition: ^0.6.0
+  # image_picker: ^0.8.4+4
+  # intl: 
+  # mime: ^1.0.2
+  # path: ^1.8.2
+  # path_provider: ^2.0.15
+  # permission_handler: ^10.0.0
+  # photo_view:
   shared_preferences: ^2.1.0
-  signature: ^5.0.0
-  syncfusion_flutter_pdfviewer: 
+  # signature: ^5.0.0
+  # syncfusion_flutter_pdfviewer: 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

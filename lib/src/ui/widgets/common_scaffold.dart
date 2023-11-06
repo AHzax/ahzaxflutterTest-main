@@ -205,17 +205,21 @@ class CommonScaffold extends StatelessWidget {
       // backgroundColor: Colors.white,
       appBar: showAppBar
           ? AppBar(
-              iconTheme: Theme.of(context).brightness == Brightness.dark ? null : IconThemeData(color: UIDataColors.blackColor),
+              iconTheme: Theme.of(context).brightness == Brightness.dark
+                  ? null
+                  : IconThemeData(color: UIDataColors.blackColor),
               elevation: elevation,
               //   +
               backgroundColor: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.black
-                          : UIDataColors.whiteColor,
+                  ? Colors.black
+                  : UIDataColors.whiteColor,
               title: Center(
                 child: Text(
                   appTitle,
                   style: TextStyle(
-                    color: Theme.of(context).brightness == Brightness.dark ? null : UIDataColors.blackColor,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? null
+                        : UIDataColors.blackColor,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
@@ -275,7 +279,17 @@ class CommonScaffold extends StatelessWidget {
                 SizedBox(),
               ],
             )
-          : null,
+          : AppBar(
+              leading: IconButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.homeRoute);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  )),
+            ),
+
       drawer: showDrawer ? CommonDrawer() : null,
       body: OrientationBuilder(
         builder: (context, orientation) {
@@ -288,7 +302,8 @@ class CommonScaffold extends StatelessWidget {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: backGroundColor ?? (Theme.of(context).brightness == Brightness.dark
+                  color: backGroundColor ??
+                      (Theme.of(context).brightness == Brightness.dark
                           ? Colors.grey.shade900
                           : UIDataColors.whiteColor),
                 ),
