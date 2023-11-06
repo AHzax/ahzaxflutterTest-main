@@ -1,9 +1,8 @@
+import 'package:docapp/src/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../services/restclient.dart';
-
-import 'editingController.dart';
 
 class HomeController extends GetxController {
   User? user = FirebaseAuth.instance.currentUser;
@@ -25,8 +24,9 @@ class HomeController extends GetxController {
   @override
   Future<void> onReady() async {
     isLoading = false;
-    userName = user!.displayName.toString();
+
     update();
+    userName = user!.displayName.toString();
     super.onReady();
   }
 }

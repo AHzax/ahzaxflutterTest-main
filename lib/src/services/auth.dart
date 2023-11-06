@@ -27,8 +27,6 @@ class AuthService extends GetxService {
     return this;
   }
 
-
-
   // Future<bool> login(String username, String password) async {
   //   LoginRequest req = LoginRequest.fromJson({
   //     "usr": username,
@@ -116,7 +114,7 @@ class AuthService extends GetxService {
         User user = userCredential.user!;
         loggedInUser = user.email;
         Get.log(loggedInUser.toString());
-        Get.offAllNamed(Routes.homeRoute);
+        // Get.toNamed(Routes.homeRoute);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
           Get.snackbar(

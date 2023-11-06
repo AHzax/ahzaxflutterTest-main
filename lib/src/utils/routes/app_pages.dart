@@ -22,7 +22,7 @@ import 'package:docapp/src/ui/views/settings.dart';
 
 class AppPages {
   // ignore: constant_identifier_names
-  static const String INITIAL = Routes.homeRoute;
+  static const String INITIAL = Routes.loginRoute;
   static final List<GetPage<dynamic>> routes = [
     // login and registrations
     // GetPage(
@@ -34,7 +34,7 @@ class AppPages {
       binding: HomeBinding(),
       page: () => HomePage(),
       middlewares: [
-        AuthMiddleware(),
+        // AuthMiddleware(),
       ],
     ),
 

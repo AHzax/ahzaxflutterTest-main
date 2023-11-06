@@ -36,6 +36,7 @@ class LoginController extends GetxController {
     String password = pass.text.trim();
 
     await auth.loginUser(email, password);
+    Get.toNamed(Routes.homeRoute);
   }
 
   void signUpUser() async {
