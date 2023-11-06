@@ -32,8 +32,8 @@ class LoginController extends GetxController {
   // Service Initialization
 
   void signIn() async {
-    String email = username.text;
-    String password = pass.text;
+    String email = username.text.trim();
+    String password = pass.text.trim();
 
     await auth.loginUser(email, password);
   }

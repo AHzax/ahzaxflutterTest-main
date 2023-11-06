@@ -17,6 +17,7 @@ class AuthService extends GetxService {
   RestClient restClient = Get.find<RestClient>();
   String? loggedInUser;
   late SharedPreferences prefs;
+  User? user = FirebaseAuth.instance.currentUser;
 
   FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -24,6 +25,23 @@ class AuthService extends GetxService {
     prefs = await SharedPreferences.getInstance();
     isLoggedIn();
     return this;
+  }
+
+  Future<void> updateEmail(String email) async {
+    if (email == '') {
+    } else {
+      await user?.updateEmail(email.trim());
+      await user?.sendEmailVerification();
+    }
+  }
+
+  Future<void> updateDisplayName(String firstname, String lastname) async {
+    if (firstname == "" && lastname == '') {
+    } else {
+      await user?.updateDisplayName(
+          "${firstname.toString().trim()} ${lastname.toString().trim()}");
+      // await user?.updateDisplayName(name.toString().trim());
+    }
   }
 
   // Future<bool> login(String username, String password) async {
@@ -69,12 +87,15 @@ class AuthService extends GetxService {
 
   //////////////////////////////////////////////////
 
-  Future<void> signUpWithEmailAndPassword(String email, String password) async {
+  Future<void> signUpWithEmailAndPassword(
+      String email, String password, String firstname, String lastname) async {
     try {
       await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      await user?.updateDisplayName("$firstname $lastname");
+
       // return credential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
@@ -99,7 +120,7 @@ class AuthService extends GetxService {
     }
   }
 
-  Future loginUser(String username, String password) async {
+  Future<void> loginUser(String username, String password) async {
     if (username.isNotEmpty) {
       try {
         UserCredential userCredential =
@@ -109,9 +130,9 @@ class AuthService extends GetxService {
         );
         User user = userCredential.user!;
         loggedInUser = user.email;
+        Get.log(loggedInUser.toString());
         Get.offAllNamed(Routes.homeRoute);
       } on FirebaseAuthException catch (e) {
-        // print(e);
         if (e.code == 'user-not-found') {
           Get.snackbar(
             "",
